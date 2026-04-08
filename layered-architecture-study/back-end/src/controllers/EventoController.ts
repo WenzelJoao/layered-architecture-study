@@ -5,7 +5,13 @@ const service = new EventoService();
 
 export class EventoController {
   async criar(req: Request, res: Response) {
-    const evento = await service.criar(req.body);
+
+    const usuarioLogado = (req as any).user;
+    
+    const evento = await service.criar({
+      ...req.body,
+      usuarioId: usuarioLogado.id
+  });
     return res.status(201).json(evento);
   }
 

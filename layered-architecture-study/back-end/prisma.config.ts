@@ -4,11 +4,11 @@ import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
 export default defineConfig({
-  schema: "src/prisma/schema.prisma",
+  schema: './src/database/prisma/schema.prisma',
   migrations: {
-    path: "src/prisma/migrations",
+    path: "src/database/prisma/migrations",
   },
   datasource: {
-    url: 'postgresql://postgres:senai@localhost:5432/clinic?schema=public',
+    url: 'postgresql://postgres:123@localhost:5432/evento?schema=public',
   },
 });

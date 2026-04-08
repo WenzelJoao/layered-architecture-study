@@ -1,9 +1,24 @@
 import { prisma } from "../database/prisma/prisma";
 
 export class EventoRepository {
-  create(data: any) {
-    return prisma.evento.create({ data });
-  }
+  async create(userData: any) {
+    try {
+      console.log("Dados que chegaram no Prisma:", userData);
+      return await prisma.evento.create({
+      data: {
+        tipo_evento: userData.tipoEvento,
+        lotacao: parseInt(userData.lotacao),
+        data_evento: new Date(userData.dataEvento), 
+        descricao: userData.descricao
+      },
+    });
+    } catch (error: any) {
+
+      console.error("ERRO DETALHADO DO PRISMA:", error);
+      throw error;
+    }
+  
+}
 
   findAll() {
     return prisma.evento.findMany();

@@ -5,9 +5,15 @@ const service = new UsuarioService();
 
 export class UsuarioController {
   async cadastro(req: Request, res: Response) {
+  try {
+    console.log("Corpo da requisição:", req.body);
     const usuario = await service.cadastro(req.body);
     return res.status(201).json({ message: "Usuário criado", data: usuario });
+  } catch (error: any) {
+    console.error("Erro no Processo de Cadastro:", error.message);
+    return res.status(400).json({ error: error.message });
   }
+}
 
   async login(req: Request, res: Response) {
     try {

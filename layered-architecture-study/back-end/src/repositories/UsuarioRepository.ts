@@ -1,9 +1,23 @@
 import { prisma } from "../database/prisma/prisma";
 
 export class UsuarioRepository {
-  create(data: any) {
-    return prisma.usuario.create({ data });
-  }
+ async create(userData: any) {
+    try {
+      console.log("Dados que chegaram no Prisma:", userData);
+      return await prisma.usuario.create({
+      data: {
+        email: userData.email,
+        senha: userData.senha,
+        nome: userData.nome || null,
+      },
+    });
+    } catch (error: any) {
+
+      console.error("ERRO DETALHADO DO PRISMA:", error);
+      throw error;
+    }
+  
+}
 
   findByEmail(email: string) {
     return prisma.usuario.findUnique({ where: { email } });

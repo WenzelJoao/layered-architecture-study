@@ -4,7 +4,10 @@ export class EventoService {
   private repo = new EventoRepository();
 
   async criar(data: any) {
-    return this.repo.create({ ...data, data_evento: new Date(data.evento) });
+    return this.repo.create({ ...data,
+      data_evento: new Date(data.data_evento),
+      usuarioId: data.usuarioId
+     });
   }
 
   async listar() {

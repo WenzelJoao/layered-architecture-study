@@ -1,15 +1,18 @@
 {
-  "name": "clinic_backend",
+  "name": "eventos-backend",
   "version": "1.0.0",
   "description": "Backend with Node, Typescript and Prisma. For students with medical clinic context;",
   "main": "index.js",
   "scripts": {
-    "start": "tsx --watch src/index.ts",
+    "start": "npx tsx --watch src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "prisma": {
+    "schema": "src/database/prisma/schema.prisma"
+  },
   "type": "module",
   "dependencies": {
     "@prisma/adapter-pg": "^7.4.2",

@@ -24,12 +24,11 @@ model Usuario {
 }
 
 model Evento {
-  id         Int      @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   tipo_evento String
-  lotacao      Int
-  descricao  String
+  lotacao     Int
+  descricao   String
   data_evento DateTime
-
 
   @@map("evento")
 }

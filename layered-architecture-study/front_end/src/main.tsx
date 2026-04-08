@@ -8,6 +8,9 @@ import { RouterProvider } from "react-router/dom";
 import Login from './pages/Login'
 import { AuthProvider } from './context/AuthContext.jsx'
 import Cadastro from './pages/Cadastro/index.js'
+import Evento from './pages/Evento/index.js'
+import Catalogo from './pages/Catalogo/index.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -16,10 +19,16 @@ const router = createBrowserRouter([
     children: [
       
       { 
-        path: "/", element: <Login /> 
+        path: "/", element: <Catalogo /> 
+      },
+      { 
+        path: "/login", element: <Login /> 
       },
        { 
         path: "/cadastro", element: <Cadastro />
+      },
+       { 
+        path: "/criar-evento", element: <Evento />
       },
     ]
   }    
