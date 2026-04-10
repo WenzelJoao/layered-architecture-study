@@ -6,9 +6,9 @@ export class EventoRepository {
       console.log("Dados que chegaram no Prisma:", userData);
       return await prisma.evento.create({
       data: {
-        tipo_evento: userData.tipoEvento,
+        tipo_evento: userData.tipo_evento,
         lotacao: parseInt(userData.lotacao),
-        data_evento: new Date(userData.dataEvento), 
+        data_evento: new Date(userData.data_evento), 
         descricao: userData.descricao
       },
     });

@@ -4,9 +4,8 @@ export class EventoService {
   private repo = new EventoRepository();
 
   async criar(data: any) {
-    return this.repo.create({ ...data,
-      data_evento: new Date(data.data_evento),
-      usuarioId: data.usuarioId
+    console.log(data)
+    return this.repo.create({ ...data,    
      });
   }
 

@@ -7,10 +7,10 @@ export class EventoController {
   async criar(req: Request, res: Response) {
 
     const usuarioLogado = (req as any).user;
-    
+      console.log(req.body)
+      
     const evento = await service.criar({
-      ...req.body,
-      usuarioId: usuarioLogado.id
+      ...req.body
   });
     return res.status(201).json(evento);
   }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { data, useNavigate } from "react-router";
 
 const CadastrarEvento = () => {
   const [tipoEvento, setTipoEvento] = useState("");
@@ -13,14 +13,22 @@ const CadastrarEvento = () => {
   const cadastrar = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
+    const dataSelecionada = new Date(dataEvento)
+    const agora = new Date()
+
+    if(dataSelecionada < agora){
+      alert("Não é possivel cadastrar eventos em datas passadas")
+      return;
+    }
+
+    const token = localStorage.getItem("tokenAcesso") || "";
     try {
       const response = await axios.post(
-        "http://localhost:3000/cadastro-evento",
+        "http://localhost:3000/evento",
         {
           tipo_evento: tipoEvento,
           lotacao: lotacao,
-          data_evento: dataEvento,
+          data_evento: new Date(dataEvento).toISOString(),
           descricao: descricao,
         },
         {

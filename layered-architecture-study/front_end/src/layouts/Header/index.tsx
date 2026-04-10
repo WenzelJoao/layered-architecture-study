@@ -27,13 +27,6 @@ export const Header = () => {
         >
           Home
         </NavLink>
-        <NavLink
-          to="/eventos"
-          end
-          className={({ isActive }) => navLinkStyles(isActive)}
-        >
-          Catalogo
-        </NavLink>
       </nav>
 
       <div className="flex items-center gap-6">
